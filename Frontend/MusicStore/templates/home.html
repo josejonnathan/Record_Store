@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% load static %}{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h3>Welcome to my music store management project!</h3>
+      <img src="{% static 'base.png' %}" alt="base" class="img-fluid w-70" />
+      <p></p>
+
+      <p>
+        I developed this project in different instances of front and backend.
+      </p>
+
+      <p>
+        In this platform, I have developed a robust backend that offers a
+        variety of endpoints through our API. Access to the information in the
+        album collection does not require authentication. Here, you can find an
+        overview of the available albums.
+      </p>
+      <p>
+        However, for more advanced functions such as creating, modifying, and
+        deleting entries, as well as accessing the full view of the collection,
+        authentication is necessary. I have implemented authentication tokens to
+        ensure the security and privacy of our users.
+      </p>
+      <p>
+        Additionally, the API integrates with the Deezer API, allowing me to
+        complement our collection with additional information about the albums,
+        such as covers, artists, and more.
+      </p>
+      <p>
+        In the frontend, I have used Django and Bootstrap to create an intuitive
+        and appealing user experience. Here combine the information stored in
+        the API with data provided by Deezer API, providing a complete
+        experience for music lovers.
+      </p>
+      <p>
+        Thank you for visiting my project, I hope you enjoy exploring the music
+        album collection!
+      </p>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-5">
+      <h3>Our API Data without Authorization</h3>
+
+      {% if error_message %}
+      <p>{{ error_message }}</p>
+      {% else %}
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in api_data %}
+          <tr>
+            <td>{{ item.title }}</td>
+            <td>{{ item.artist }}</td>
+            <td>{{ item.year }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
